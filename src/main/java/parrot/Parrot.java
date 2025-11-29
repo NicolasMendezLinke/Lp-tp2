@@ -1,5 +1,10 @@
 package parrot;
 
+/**
+ * Representa um papagaio que calcula sua velocidade e seu grito
+ * com base no tipo da espécie e outras características como
+ * número de cocos, voltagem e se está pregado.
+ */
 public class Parrot {
 
     private static final double BASE_SPEED = 12.0;
@@ -32,9 +37,9 @@ public class Parrot {
     }
 
     private double calculateAfricanSpeed() {
-        double coconutWeightPenalty = LOAD_FACTOR * numberOfCoconuts;
-        double speedAfterPenalty = BASE_SPEED - coconutWeightPenalty;
-        return Math.max(MIN_SPEED, speedAfterPenalty);
+        double penalty = LOAD_FACTOR * numberOfCoconuts;
+        double finalSpeed = BASE_SPEED - penalty;
+        return Math.max(MIN_SPEED, finalSpeed);
     }
 
     private double calculateNorwegianBlueSpeed() {
@@ -42,10 +47,8 @@ public class Parrot {
             return MIN_SPEED;
         }
 
-        double voltageGeneratedSpeed = voltage * BASE_SPEED;
-        double limitedSpeed = Math.min(MAX_NORWEGIAN_SPEED, voltageGeneratedSpeed);
-
-        return limitedSpeed;
+        double generatedSpeed = voltage * BASE_SPEED;
+        return Math.min(MAX_NORWEGIAN_SPEED, generatedSpeed);
     }
 
     public String getCry() {
@@ -56,3 +59,4 @@ public class Parrot {
         };
     }
 }
+
